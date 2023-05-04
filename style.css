@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+
+/* Reset default styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-image: url(./image/gifss.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(15px);
+  padding: 90px;
+}
+
+
+.container {
+    width: 1120px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 110px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.container img {
+    width: 95%;
+}
+
+/* ================DESCRIPTION=======================*/
+
+.description {
+    margin-right: 30px;
+}
+
+.description h1 {
+    margin: 25px 0 10px 0;
+}
+
+.description p {
+    font-size: 15px;
+    
+}
+.description span {
+    margin-top: 20px;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 30px;
+    color: #353535;
+}
+
+.description button {
+    font-size: 18px;
+    padding: 15px 50px;
+    margin-top: 40px;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    color: #fff;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.12);
+}
+.description .buy {
+    background-color: #181717;
+}
+
+.description .cart {
+    background-color: #ca5a38;
+    margin-left: 5px;
+}
+
+/* ================END DESCRIPTION=======================*/
+
+.xzoom-thumbs a {
+    text-decoration: none;
+}
+
+.xzoom-thumbs img {
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    border: 1px solid #ccc;
+}
+
+.xzoom-preview {
+    border: 1px solid #e0e0e0;
+}
+
+.buy:hover {
+    background-color: rgb(11, 56, 40);
+}
+.cart:hover {
+    background-color: rgb(68, 49, 2);
+}
