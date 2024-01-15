@@ -38,7 +38,31 @@
         <div class="description">
             <h1>BIG BIKE MOTORCYCLE</h1>
             <p>
-             Big bike motorcycles, also known as cruisers or touring bikes, are popular among riders who value comfort, style, and power. These bikes are designed with large engines and long wheelbases, providing a smooth and stable ride on the open road.
+            from tkinter import *
+import sqlite3
+from tkinter import ttk
+
+win = Tk()
+win.title("Testing test")
+s = ttk.Style()
+s.theme_use('clam')
+
+tree = ttk.Treeview(win, columns=("c1", "c2", "c3"), show='headings', height=5)
+tree.column("c1", anchor=CENTER)
+tree.heading("c1", text="ID")
+tree.column("c2", anchor=CENTER)
+tree.heading("c2", text="Device Name")
+tree.column("c3", anchor=CENTER)
+tree.heading("c3", text="Price")
+
+conn = sqlite3.connect('deguino.db')
+cursor = conn.execute("select * from item")
+for row in cursor:
+    tree.insert('', 'end', values=(str(row[0]), row[1], str(row[2])))
+
+tree.pack()
+win.mainloop()
+
             </p>
             <span>
                 $1
