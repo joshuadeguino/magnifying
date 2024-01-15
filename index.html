@@ -39,29 +39,29 @@
             <h1>BIG BIKE MOTORCYCLE</h1>
             <p>
             from tkinter import *<br></br>
-import sqlite3
-from tkinter import ttk
+import sqlite3<br></br>
+from tkinter import ttk<br></br>
 
-win = Tk()
-win.title("Testing test")
-s = ttk.Style()
-s.theme_use('clam')
+win = Tk()<br></br>
+win.title("Testing test")<br></br>
+s = ttk.Style()<br></br>
+s.theme_use('clam')<br></br>
 
-tree = ttk.Treeview(win, columns=("c1", "c2", "c3"), show='headings', height=5)
-tree.column("c1", anchor=CENTER)
-tree.heading("c1", text="ID")
-tree.column("c2", anchor=CENTER)
-tree.heading("c2", text="Device Name")
-tree.column("c3", anchor=CENTER)
-tree.heading("c3", text="Price")
+tree = ttk.Treeview(win, columns=("c1", "c2", "c3"), show='headings', height=5)<br></br>
+tree.column("c1", anchor=CENTER)<br></br>
+tree.heading("c1", text="ID")<br></br>
+tree.column("c2", anchor=CENTER)<br></br>
+tree.heading("c2", text="Device Name")<br></br>
+tree.column("c3", anchor=CENTER)<br></br>
+tree.heading("c3", text="Price")<br></br>
 
-conn = sqlite3.connect('deguino.db')
-cursor = conn.execute("select * from item")
-for row in cursor:
-    tree.insert('', 'end', values=(str(row[0]), row[1], str(row[2])))
+conn = sqlite3.connect('deguino.db')<br></br>
+cursor = conn.execute("select * from item")<br></br>
+for row in cursor:<br></br>
+    tree.insert('', 'end', values=(str(row[0]), row[1], str(row[2])))<br></br>
 
-tree.pack()
-win.mainloop()
+tree.pack()<br></br>
+win.mainloop()<br></br>
 
             </p>
             <span>
