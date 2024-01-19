@@ -44,22 +44,78 @@
 
                 <strong>Code Example:</strong>
                 <pre>
-                    import sqlite3
-                    import tkinter as tk
+              import sqlite3
+import tkinter as tk
 
-                    conn = sqlite3.connect('student_records.db')
-                    c = conn.cursor()
-                    c.execute('CREATE TABLE IF NOT EXISTS student (id INTEGER PRIMARY KEY, studname TEXT, studgender TEXT, score INTEGER)')
-                    conn.commit()
+conn = sqlite3.connect('student_records.db')
+c = conn.cursor()
+c.execute('CREATE TABLE IF NOT EXISTS student (id INTEGER PRIMARY KEY, studname TEXT, studgender TEXT, score INTEGER)')
+conn.commit()
 
-                    window = tk.Tk()
-                    window.title("Student Records")
+window = tk.Tk()
+window.title("Student Records")
 
-                    # ... (rest of your code) ...
+studid_label = tk.Label(window, text="Student ID:")
+studid_label.grid(row=0, column=0)
+studid_entry = tk.Entry(window)
+studid_entry.grid(row=0, column=1)
 
-                    window.mainloop()
+studentn_label = tk.Label(window, text="Student Name:")
+studentn_label.grid(row=1, column=0)
+studentn_entry = tk.Entry(window)
+studentn_entry.grid(row=1, column=1)
 
-                    conn.close()
+gender_label = tk.Label(window, text="Student Gender:")
+gender_label.grid(row=2, column=0)
+gender_entry = tk.Entry(window)
+gender_entry.grid(row=2, column=1)
+
+def add_record():
+    studid = int(studid_entry.get())
+    studentn = studentn_entry.get()
+    gender = gender_entry.get()
+    c.execute("INSERT INTO student VALUES (?, ?, ?, ?)", (studid, studentn, gender, 0))  # Assuming score is initialized to 0
+    conn.commit()
+    clear_entries()
+    display_male_female()
+
+def delete_record():
+    studid = int(studid_entry.get())
+    c.execute("DELETE FROM student WHERE id=?", (studid,))
+    conn.commit()
+    clear_entries()
+    display_male_female()
+
+def display_male_female():
+    c.execute("SELECT COUNT(*) FROM student WHERE studgender = 'male'")
+    male_count = c.fetchone()[0]
+    male_label.config(text="Male Students: " + str(male_count))
+
+    c.execute("SELECT COUNT(*) FROM student WHERE studgender = 'female'")
+    female_count = c.fetchone()[0]
+    female_label.config(text="Female Students: " + str(female_count))
+
+def clear_entries():
+    studid_entry.delete(0, tk.END)
+    studentn_entry.delete(0, tk.END)
+    gender_entry.delete(0, tk.END)
+
+add_button = tk.Button(window, text="Add Record", command=add_record)
+add_button.grid(row=3, column=0)
+
+delete_button = tk.Button(window, text="Delete Record", command=delete_record)
+delete_button.grid(row=3, column=1)
+
+male_label = tk.Label(window, text="Male Students:")
+male_label.grid(row=4, column=0)
+
+female_label = tk.Label(window, text="Female Students:")
+female_label.grid(row=5, column=0)
+
+window.mainloop()
+
+conn.close()
+
                 </pre>
 
                 <br><br>
